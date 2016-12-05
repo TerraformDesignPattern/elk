@@ -1,0 +1,14 @@
+bootstrap.mlockall: true
+cloud.aws.region: %AWS_REGION%
+cloud_node_auto_attributes: true
+cluster.name: elk_stack
+discovery.ec2.groups: %DISCOVERY_EC2_GROUPS%
+discovery.type: ec2
+discovery.zen.minimum_master_nodes: %DISCOVERY_ZEN_MINIMUM_MASTER_NODES%
+http.jsonp.enable: true
+network.host: %NETWORK_HOST%
+node.data: true
+node.master: true
+transport.tcp.port: 9300
+http.port: 9200
+#node.name:

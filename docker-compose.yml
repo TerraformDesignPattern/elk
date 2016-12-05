@@ -1,0 +1,45 @@
+version: '2'
+services:
+  elasticsearch:
+    hostname: elasticsearch
+    container_name: elasticsearch
+    image: jonbrouse/sysadvent2016:elasticsearch
+    build: elasticsearch
+    command: -Des.insecure.allow.root=true
+    network_mode: "host"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - ./elasticsearch/volumes/esdata/:/opt/elasticsearch/data
+      - ./elasticsearch/assets/elasticsearch.yml:/opt/elasticsearch/config/elasticsearch.yml
+  logstash:
+    hostname: logstash
+    container_name: logstash
+    image: jonbrouse/sysadvent2016:logstash
+    command: -f /etc/logstash.conf 
+    tty: true
+    build: logstash
+    ports:
+      - "24642:24642"
+    volumes:
+      "- ./logstash/assets/logstash.conf:/usr/share/logstash/pipeline/logstash.conf"
+  kibana:
+    hostname: kibana
+    container_name: kibana
+    image: jonbrouse/sysadvent2016:kibana
+    build: kibana
+    volumes:
+      - ./kibana/assets/kibana.yml/:/opt/kibana/config/kibana.yml
+  nginx:
+    hostname: nginx
+    container_name: nginx
+    image: nginx:stable-alpine
+    links:
+      - kibana
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/assets/certs:/etc/nginx/certs
+      - ./nginx/assets/nginx.conf:/etc/nginx/nginx.conf
