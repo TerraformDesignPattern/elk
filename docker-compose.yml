@@ -23,7 +23,7 @@ services:
     ports:
       - "24642:24642"
     volumes:
-      "- ./logstash/assets/logstash.conf:/usr/share/logstash/pipeline/logstash.conf"
+      - "./logstash/assets/logstash.conf:/usr/share/logstash/pipeline/logstash.conf"
   kibana:
     hostname: kibana
     container_name: kibana

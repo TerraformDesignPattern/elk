@@ -10,7 +10,7 @@ RUN apk add --update bash curl perl tar && \
     curl -O https://download.elastic.co/logstash/logstash/logstash-${VERSION}.tar.gz && \
     tar -xvf logstash-${VERSION}.tar.gz && \
     rm -rf logstash-${VERSION}.tar.gz /var/cache/apk/* && \
-    ln -s logstash-${VERSION} logstash && \
+    ln -s logstash-${VERSION} logstash
 
 ## Install Plugins
 RUN /opt/logstash/bin/logstash-plugin install logstash-input-cloudwatch_logs
