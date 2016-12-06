@@ -26,7 +26,7 @@ variable "discovery_zen_minimum_master_nodes" {
 }
 
 variable "elk_repository" {
-  default = "jonbrouse/elk"
+  default = "TerraformDesignPattern/elk"
 }
 
 variable "elk_repository_branch" {
