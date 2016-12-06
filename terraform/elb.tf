@@ -14,6 +14,13 @@ resource "aws_elb" "external_elb" {
     ssl_certificate_id = "${data.terraform_remote_state.account.ssl_arn}"
   }
 
+  listener {
+    instance_port = 80
+    instance_protocol = "http"
+    lb_port = 80
+    lb_protocol = "http"
+  }
+
   health_check {
     healthy_threshold = 2
     unhealthy_threshold = 2
