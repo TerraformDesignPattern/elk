@@ -29,6 +29,7 @@ resource "aws_iam_role_policy" "ec2_iam_role_policy" {
     {
       "Effect": "Allow",
       "Action": [
+        "logs:DescribeLogStreams",
         "logs:GetLogEvents"
       ],
       "Resource": "${data.terraform_remote_state.vpc.flow_log_cloudwatch_log_group_arn}"
