@@ -21,6 +21,7 @@ module "elk" {
 * [AWS Blog - CloudWatch to ELK](https://aws.amazon.com/blogs/aws/cloudwatch-logs-subscription-consumer-elasticsearch-kibana-dashboards/)
 * [Elasticsearch - EC2 Discovery Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/discovery-ec2.html)
 * [Logstash - Input Plugins Use Enviroment Variables](https://www.elastic.co/guide/en/logstash/current/environment-variables.html)
+* [Logstash - Cloudwatch Log Input Blog Post](http://lukewaite.github.io/aws/lambda/elk/logstash/2015/07/13/aws-lambda-and-elk.html)
 * [Logstash - Redis Input Pugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-redis.html)
 * [Logstash Book - Redis Configuration](https://read.amazon.com/?asin=B00B9JQTCO)
 * [Stack Overflow - Public ELB to Private Subnet](http://stackoverflow.com/questions/22541895/amazon-elb-for-ec2-instances-in-private-subnet-in-vpc)
