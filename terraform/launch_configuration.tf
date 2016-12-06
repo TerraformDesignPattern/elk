@@ -4,9 +4,11 @@ data "template_file" "user_data" {
   vars {
     aws_account = "${var.aws_account}"
     aws_region = "${var.aws_region}"
+    cluster_name = "${var.environment_name}-${var.unique_id}elk"
     discovery_ec2_groups = "${aws_security_group.security_group.id}"
     discovery_zen_minimum_master_nodes = "${var.discovery_zen_minimum_master_nodes}"
-    cluster_name = "${var.environment_name}-${var.unique_id}elk"
+    elk_repository = "${var.elk_repository}"
+    elk_repository_branch = "${var.elk_repository_branch}"
     flow_log_cloudwatch_log_group_arn = "${data.terraform_remote_state.vpc.flow_log_cloudwatch_log_group_arn}"
   }
 }

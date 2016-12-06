@@ -4,11 +4,11 @@
 #### ELK Stack Version Configurations
 AWS_ACCONT=${aws_account}
 AWS_REGION=${aws_region}
-BRANCH="sysadvent"
+BRANCH=${elk_repository_branch}
 CLUSTER_NAME=${cluster_name}
 DISCOVERY_EC2_GROUPS=${discovery_ec2_groups}
 DISCOVERY_ZEN_MINIMUM_MASTER_NODES=${discovery_zen_minimum_master_nodes}
-ELK_REPOSITORY_URL="https://github.com/jonbrouse/elk/archive/$BRANCH.zip"
+ELK_REPOSITORY_URL="https://github.com/${elk_repository}/archive/$BRANCH.zip"
 FLOW_LOG_CLOUDWATCH_LOG_GROUP_ARN=${flow_log_cloudwatch_log_group_arn}
 NETWORK_HOST=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 

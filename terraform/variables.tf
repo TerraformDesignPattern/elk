@@ -9,10 +9,6 @@ variable "apply_immediately" {
   default = true
 }
 
-variable "redis_cluster_count" {
-  default = "3"
-}
-
 variable "autoscaling_group_desired_capacity" {
   default = "3"
 }
@@ -27,6 +23,14 @@ variable "autoscaling_group_max_size" {
 
 variable "discovery_zen_minimum_master_nodes" {
   default = "2"
+}
+
+variable "elk_repository" {
+  default = "jonbrouse/elk"
+}
+
+variable "elk_repository_branch" {
+  default = "master"
 }
 
 variable "launch_configuration_instance_type" {
