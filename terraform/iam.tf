@@ -1,6 +1,7 @@
 // Create IAM Role
 resource "aws_iam_role" "iam_role" {
   name = "${var.environment_name}-${var.unique_id}elk-role"
+
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -22,6 +23,7 @@ EOF
 resource "aws_iam_role_policy" "ec2_iam_role_policy" {
   name = "${var.environment_name}-${var.unique_id}elk-ec2-policy"
   role = "${aws_iam_role.iam_role.id}"
+
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -48,6 +50,6 @@ EOF
 
 // Create IAM Instance Profile
 resource "aws_iam_instance_profile" "iam_instance_profile" {
-  name = "${var.environment_name}-${var.unique_id}elk-instance-profile"
+  name  = "${var.environment_name}-${var.unique_id}elk-instance-profile"
   roles = ["${aws_iam_role.iam_role.name}"]
 }

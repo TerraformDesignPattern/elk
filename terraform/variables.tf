@@ -1,8 +1,13 @@
 variable "aws_region" {}
+
 variable "aws_account" {}
+
 variable "environment_name" {}
+
 variable "image_id" {}
+
 variable "kibana_address" {}
+
 variable "vpc_name" {}
 
 variable "apply_immediately" {
@@ -44,4 +49,3 @@ variable "node_type" {
 variable "unique_id" {
   default = ""
 }
-
