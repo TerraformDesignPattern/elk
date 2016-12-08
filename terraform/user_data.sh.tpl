@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -ex
 # Cloud config for to start an ELK Server
 
 #### ELK Stack Version Configurations
