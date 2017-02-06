@@ -30,11 +30,6 @@ resource "aws_iam_role_policy" "ec2_iam_role_policy" {
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": "logs:*",
-      "Resource": "${data.terraform_remote_state.vpc.flow_log_cloudwatch_log_group_arn}"
-    },
-    {
-      "Effect": "Allow",
       "Action": [
         "ec2:Describe*"
       ],

@@ -10,7 +10,6 @@ data "template_file" "user_data" {
     discovery_zen_minimum_master_nodes = "${var.discovery_zen_minimum_master_nodes}"
     elk_repository                     = "${var.elk_repository}"
     elk_repository_branch              = "${var.elk_repository_branch}"
-    flow_log_cloudwatch_log_group_arn  = "${data.terraform_remote_state.vpc.flow_log_cloudwatch_log_group_arn}"
   }
 }
 
