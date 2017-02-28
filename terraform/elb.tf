@@ -1,5 +1,11 @@
+// Attach EC2 Instance to ELB
+resource "aws_elb_attachment" "elb_attachment" {
+  elb      = "${aws_elb.elb.id}"
+  instance = "${aws_instance.instance.id}"
+}
+
 // Create Kibana External ELB
-resource "aws_elb" "external_elb" {
+resource "aws_elb" "elb" {
   name                      = "${var.environment_name}-kibana-${var.aws_region}"
   subnets                   = ["${data.terraform_remote_state.vpc.public_subnet_ids}"]
   security_groups           = ["${aws_security_group.elb_security_group.id}"]
@@ -30,6 +36,7 @@ resource "aws_elb" "external_elb" {
   }
 
   tags {
+    Name             = "${var.environment_name}-elk-${var.aws_region_shortname}"
     aws_account      = "${var.aws_account}"
     aws_region       = "${var.aws_region}"
     environment_name = "${var.environment_name}"

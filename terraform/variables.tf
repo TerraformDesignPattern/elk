@@ -14,28 +14,16 @@ variable "apply_immediately" {
   default = true
 }
 
-variable "autoscaling_group_desired_capacity" {
-  default = "3"
-}
-
-variable "autoscaling_group_min_size" {
-  default = "1"
-}
-
-variable "autoscaling_group_max_size" {
-  default = "3"
-}
-
-variable "discovery_zen_minimum_master_nodes" {
-  default = "2"
-}
-
 variable "elk_repository" {
   default = "TerraformDesignPattern/elk"
 }
 
 variable "elk_repository_branch" {
   default = "master"
+}
+
+variable "key_name" {
+  default = "operations"
 }
 
 variable "launch_configuration_instance_type" {
