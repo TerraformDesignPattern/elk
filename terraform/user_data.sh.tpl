@@ -4,12 +4,16 @@
 #### ELK Stack Version Configurations
 AWS_ACCONT=${aws_account}
 AWS_REGION=${aws_region}
+AWS_REGION_SHORTNAME=${aws_region_shortname}
 BRANCH=${elk_repository_branch}
 CLUSTER_NAME=${cluster_name}
 DISCOVERY_EC2_GROUPS=${discovery_ec2_groups}
 DISCOVERY_ZEN_MINIMUM_MASTER_NODES=${discovery_zen_minimum_master_nodes}
 ELK_REPOSITORY_URL="https://github.com/${elk_repository}/archive/$BRANCH.zip"
+ENVIRONMENT_NAME=${environment_name}
 NETWORK_HOST=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+
+sed "s/^127.0.0.1.*/127.0.0.1 $ENVIRONMENT_NAME-elk-$AWS_REGION_SHORTNAME01/" /etc/hosts
 
 
 #### Download Docker ELK Repository
