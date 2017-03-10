@@ -28,7 +28,7 @@ data "template_file" "user_data" {
     aws_account                        = "${var.aws_account}"
     aws_region                         = "${var.aws_region}"
     aws_region_shortname               = "${var.aws_region_shortname}"
-    cluster_name                       = "${var.environment_name}-elk-${data.terraform_remote_state.vpc.aws_region_shortname}${var.stack_id}0"
+    cluster_name                       = "${var.environment_name}-${var.service}-${data.terraform_remote_state.vpc.aws_region_shortname}${var.stack_id}0"
     discovery_ec2_groups               = "${aws_security_group.security_group.id}"
     discovery_zen_minimum_master_nodes = "${var.discovery_zen_minimum_master_nodes}"
     elk_repository                     = "${var.elk_repository}"
