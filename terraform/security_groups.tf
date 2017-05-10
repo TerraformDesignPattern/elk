@@ -105,7 +105,6 @@ resource "aws_security_group_rule" "allow_all" {
   from_port                = 22
   to_port                  = 22
   protocol                 = "tcp"
-  self                     = true
   security_group_id        = "${data.terraform_remote_state.ssh_bastion.security_group_id}"
   source_security_group_id = "${aws_security_group.ec2_security_group.id}"
 }
