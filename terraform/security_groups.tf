@@ -35,19 +35,10 @@ resource "aws_security_group" "elb_security_group" {
 }
 
 // Create ELK Security Group
-resource "aws_security_group" "security_group" {
+resource "aws_security_group" "ec2_security_group" {
   name        = "${var.environment_name}-${var.unique_id}elk-sg-${var.aws_region}"
   description = "Security Group for ${var.environment_name}-${var.unique_id}elk"
   vpc_id      = "${data.terraform_remote_state.vpc.vpc_id}"
-
-  // allow traffic for TCP 22
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    self        = true
-    cidr_blocks = ["${data.terraform_remote_state.vpc.vpc_cidr_block}"]
-  }
 
   // allow traffic for TCP 80
   ingress {
@@ -106,4 +97,15 @@ resource "aws_security_group" "security_group" {
     Environment = "${var.environment_name}"
     Name        = "${var.environment_name}-${var.unique_id}elk-sg-${var.aws_region}"
   }
+}
+
+resource "aws_security_group_rule" "allow_all" {
+  // allow traffic for TCP 22
+  type                     = "ingress"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
+  self                     = true
+  security_group_id        = "${data.terraform_remote_state.ssh_bastion.security_group_id}"
+  source_security_group_id = "${aws_security_group.ec2_security_group.id}"
 }
