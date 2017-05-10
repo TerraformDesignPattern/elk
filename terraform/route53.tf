@@ -1,6 +1,6 @@
 // Create ELB DNS Alias
 resource "aws_route53_record" "external_elb_route53_record" {
-  zone_id = "${data.terraform_remote_state.account.primary_zone_id}"
+  zone_id = "${data.terraform_remote_state.account.route53_zone_id}"
   name    = "${var.kibana_address}.${data.terraform_remote_state.account.domain_name}."
   type    = "A"
 
