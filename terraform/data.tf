@@ -25,7 +25,7 @@ data "terraform_remote_state" "ssh_bastion" {
 
   config {
     bucket  = "${var.aws_account}"
-    key     = "aws/${var.aws_region}/${var.vpc_name}/${var.environtment_name}/ssh-bastion/terraform.tfstate"
+    key     = "aws/${var.aws_region}/${var.vpc_name}/${var.environment_name}/ssh-bastion/terraform.tfstate"
     profile = "${var.aws_account}"
     region  = "us-east-1"
   }
