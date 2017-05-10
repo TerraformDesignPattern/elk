@@ -48,5 +48,5 @@ EOF
 // Create IAM Instance Profile
 resource "aws_iam_instance_profile" "iam_instance_profile" {
   name  = "${var.environment_name}-${var.unique_id}elk-instance-profile"
-  roles = ["${aws_iam_role.iam_role.name}"]
+  role = ["${aws_iam_role.iam_role.name}"]
 }
