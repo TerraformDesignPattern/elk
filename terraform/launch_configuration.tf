@@ -6,7 +6,7 @@ data "template_file" "user_data" {
     aws_account                        = "${var.aws_account}"
     aws_region                         = "${var.aws_region}"
     cluster_name                       = "${var.environment_name}-${var.unique_id}elk"
-    discovery_ec2_groups               = "${aws_security_group.security_group.id}"
+    discovery_ec2_groups               = "${aws_security_group.ec2_security_group.id}"
     discovery_zen_minimum_master_nodes = "${var.discovery_zen_minimum_master_nodes}"
     elk_repository                     = "${var.elk_repository}"
     elk_repository_branch              = "${var.elk_repository_branch}"
@@ -21,6 +21,6 @@ resource "aws_launch_configuration" "launch_configuration" {
   key_name             = "${data.terraform_remote_state.account.key_pair_name}"
   image_id             = "${var.image_id}"
   instance_type        = "${var.launch_configuration_instance_type}"
-  security_groups      = ["${split(",", aws_security_group.security_group.id)}"]
+  security_groups      = ["${split(",", aws_security_group.ec2_security_group.id)}"]
   user_data            = "${data.template_file.user_data.rendered}"
 }

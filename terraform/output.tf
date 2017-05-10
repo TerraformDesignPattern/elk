@@ -6,6 +6,6 @@ output "launch_configuration_id" {
   value = "${aws_launch_configuration.launch_configuration.id}"
 }
 
-output "security_group_id" {
-  value = "${aws_security_group.security_group.id}"
+output "ec2_security_group_id" {
+  value = "${aws_security_group.ec2_security_group.id}"
 }
