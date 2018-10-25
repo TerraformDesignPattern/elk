@@ -1,0 +1,38 @@
+matrix:
+  include:
+  - language: bash
+    env:
+    - TERRAFORM_VERSION=0.11.8
+    - AWS_REGION=us-east-1
+    - AWS_ACCOUNT=example-aws-account
+    - ENVIRONMENT_NAME=prod
+    - IMAGE_ID=example_image
+    - KIBANA_ADDRESS=example.com
+    - VPC_NAME=example-vpc-name
+    sudo: required
+    before_script:
+    - wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -O /tmp/terraform.zip
+    - sudo unzip -d /usr/local/bin/ /tmp/terraform.zip
+    script:
+    - cd terraform/
+    - terraform init
+    - |
+        terraform validate \
+          -var aws_region=$AWS_REGION \
+          -var aws_account=$AWS_ACCOUNT \
+          -var environment_name=$ENVIRONMENT_NAME \
+          -var image_id=$IMAGE_ID \
+          -var kibana_address=$KIBANA_ADDRESS \
+          -var vpc_name=$VPC_NAME
+  - language: bash
+    services:
+    - docker
+    env:
+    - DOCKER_COMPOSE_VERSION=1.22.0
+    before_install:
+    - sudo rm /usr/local/bin/docker-compose
+    - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+    - chmod +x docker-compose
+    - sudo mv docker-compose /usr/local/bin
+    script:
+    - docker-compose build

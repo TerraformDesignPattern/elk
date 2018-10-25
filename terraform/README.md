@@ -2,6 +2,8 @@
 
 This module creates an ELK stack with an Elasticsearch cluster.
 
+![Terraform Graph](./graph.svg)
+
 ## Example Usage
 
 ```
@@ -14,6 +16,12 @@ module "elk" {
   environment_name = "${module.environment.environment_name}"
   unique_id = "sysadvent-"
 }
+```
+
+## Generate graph
+
+```bash
+terraform graph -draw-cycles | dot -Tsvg -o graph.svg
 ```
 
 # Resources
